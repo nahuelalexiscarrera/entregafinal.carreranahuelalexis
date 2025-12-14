@@ -1,89 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mercado Negro · En Construcción</title>
-  <meta name="description" content="El Mercado Negro del Pacto Calavera abrirá sus puertas pronto. Comercio de Silver, Skins y Equipamiento en Caerleon.">
-  
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="icon" type="image/png" href="../img/favicon.png">
-</head>
-<body class="theme-caerleon">
-  
-  <div class="global-overlay"></div>
+  <meta name="description" content="Próximamente: Mercado Negro del Pacto Calavera. Comercio seguro en Albion Online.">
 
-  <div class="page-wrapper">
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href="../index.html" class="brand-link">
-          <img src="../img/logo_taberna.png" alt="Emblema" class="brand-logo" width="48" height="48">
-          <span class="brand-text">Taberna Calavera</span>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+  <header class="site-header sticky-top">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">
+          <img src="../img/logo_taberna.png" alt="Logo" width="50" height="50">
+          <span class="logo-text ms-2">Taberna Calavera</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav align-items-center gap-3">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="./elpacto.html">El Pacto</a></li>
+            <li class="nav-item"><a class="nav-link" href="./actividades.html">Actividades</a></li>
+            <li class="nav-item"><a class="nav-link active" href="./mercado.html">Mercado Negro</a></li>
+            <li class="nav-item ms-lg-2">
+              <a href="./formulario.html" class="btn btn-primary btn-sm rounded-pill px-4 text-white">Unirte</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="site-main">
+
+    <section class="construction-hero">
+      <div class="hero-bg-image" style="background-image: url('../img/black_market_bg.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="container text-center construction-visual z-1">
+
+        <div class="locked-market-badge">
+          <div class="skull-container mb-4">
+            <img src="../img/logo_taberna.png" alt="Calavera" class="locked-skull">
+
+          </div>
+
+          <h1 class="market-title display-4 font-cinzel text-white mb-3">MERCADO NEGRO</h1>
+          <p class="lead mb-4">Los contrabandistas están negociando las rutas...</p>
+
+          <div class="stamp-box">
+            <span>PRÓXIMAMENTE</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+
+    <div class="container">
+      <p class="mb-1">Forjada en Caerleon · El Pacto nunca se rompe.</p>
+      <p class="small text-muted">&copy; <span id="year">2025</span> Taberna Calavera | by Alexis Carrera</p>
+      <div class="d-flex justify-content-center gap-3 mt-3 opacity-75">
+        <a href="https://youtu.be/w9z51MnOFV4" target="_blank" rel="noopener">
+          <img src="../img/youtube.png" width="28" height="28" alt="youtube">
+        </a>
+        <a href="https://www.instagram.com/tabernacalavera_albion/" target="_blank" rel="noopener">
+          <img src="../img/instagram.png" width="28" height="28" alt="instagram">
+        </a>
+        <a href="https://www.tiktok.com/@tabernacalavera_albion" target="_blank" rel="noopener">
+          <img src="../img/tiktok-square.png" width="28" height="28" alt="tiktok">
         </a>
 
-        <button class="mobile-menu-toggle" aria-label="Abrir menú">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        </button>
-
-        <nav class="main-nav">
-          <ul class="nav-list">
-            <li><a href="../index.html" class="nav-link">Inicio</a></li>
-            <li><a href="elpacto.html" class="nav-link">El Pacto</a></li>
-            <li><a href="actividades.html" class="nav-link">Actividades</a></li>
-            <li><a href="mercado.html" class="nav-link is-active" aria-current="page">Mercado Negro</a></li>
-            <li><a href="unirte.html" class="nav-cta btn-small">Unirte</a></li>
-          </ul>
-        </nav>
       </div>
-    </header>
-
-    <main class="site-content">
-      
-      <section class="construction-hero">
-        <div class="hero-bg-image" style="background-image: url('../img/black_market_bg.jpg');"></div>
-        <div class="hero-overlay" style="background: rgba(0,0,0,0.85);"></div>
-        
-        <div class="construction-visual">
-    <div class="locked-market-badge">
-        <img src="../img/logo_taberna.png" alt="Logo Taberna" class="locked-skull">
-        
-        <div class="locked-overlay">
-            <h2 class="market-title">MERCADO NEGRO</h2>
-            <div class="stamp-box">
-                <span>PRÓXIMAMENTE</span>
-            </div>
-        </div>
     </div>
-</div>
+  </footer>
 
-
- </div>
-      </section>
-
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p class="slogan">El Pacto nunca se rompe.</p>
-        <p>&copy; <span id="current-year">2024</span> Taberna Calavera.</p>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-      document.getElementById('current-year').textContent = new Date().getFullYear();
-      
-      // Menú Móvil
-      const menuToggle = document.querySelector('.mobile-menu-toggle');
-      const navList = document.querySelector('.main-nav .nav-list');
-      if(menuToggle){
-        menuToggle.addEventListener('click', () => {
-            navList.classList.toggle('is-open');
-        });
-      }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
+
 </html>

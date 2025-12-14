@@ -1,0 +1,574 @@
+@charset "UTF-8";
+/* =========================================
+   1. CONFIGURACIÓN Y VARIABLES (The Caerleon Theme)
+   ========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap");
+:root {
+  --col-blood: #b21c2a;
+  --col-blood-dark: #8a121e;
+  --col-gold: #c59d4d;
+  --col-void: #000000;
+  --col-void-light: #0f1218;
+  --col-text: #f8f7f7;
+  --col-text-muted: rgb(214, 213, 213);
+  --font-display: Cinzel, serif;
+  --font-body: Inter, sans-serif;
+}
+
+/* =========================================
+   2. RESET Y BASE
+   ========================================= */
+body {
+  background-color: #000000;
+  color: #f8f7f7;
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, .navbar-brand {
+  font-family: "Cinzel", serif;
+  color: #f8f7f7;
+  letter-spacing: 0.02em;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* =========================================
+   3. HEADER Y NAVBAR
+   ========================================= */
+.site-header {
+  background: rgba(5, 7, 10, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(197, 157, 77, 0.2);
+}
+
+.logo-text {
+  color: #c59d4d;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.navbar-nav .nav-link {
+  color: rgb(214, 213, 213) !important;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  position: relative;
+  padding: 0.5rem 1rem !important;
+}
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+  color: #fff !important;
+}
+.navbar-nav .nav-link:hover::after, .navbar-nav .nav-link.active::after {
+  width: 80%;
+}
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #c59d4d;
+  transition: width 0.3s ease;
+}
+
+.navbar-toggler {
+  border: none;
+  box-shadow: none !important;
+}
+.navbar-toggler .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* =========================================
+   4. LAYOUT SYSTEM
+   ========================================= */
+.layout-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  padding-bottom: 4rem;
+}
+
+.section {
+  position: relative;
+  width: 100%;
+}
+
+.text-gold {
+  color: #c59d4d !important;
+}
+
+.bg-darker {
+  background-color: black;
+}
+
+.border-white-10 {
+  border-color: rgba(233, 232, 232, 0.1) !important;
+}
+
+/* =========================================
+   5. HERO & VIDEO
+   ========================================= */
+.video-hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80vh;
+  z-index: -1;
+  overflow: hidden;
+}
+.video-hero video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+.video-hero .video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(5, 7, 10, 0.4) 0%, #000000 100%);
+}
+
+.hero {
+  margin-top: 10vh;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+}
+.hero-flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero-eyebrow {
+  color: #c59d4d;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero-pacto {
+  position: relative;
+  padding: 6rem 0;
+  margin-top: -1px;
+  background-color: #000000;
+}
+.hero-pacto .hero-bg-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.4) sepia(0.2);
+  z-index: 0;
+}
+.hero-pacto .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, #000000);
+  z-index: 0;
+}
+
+/* =========================================
+   6. COMPONENTES UI (Botones y Cards)
+   ========================================= */
+.btn-primary {
+  background-color: #b21c2a !important;
+  border-color: #b21c2a !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.8rem 1.8rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  background-color: #8a121e !important;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(178, 28, 42, 0.5);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  color: #fff;
+}
+
+.hover-white:hover {
+  color: #fff !important;
+  text-decoration: underline !important;
+}
+
+.activity-card, .card-base {
+  background: linear-gradient(145deg, #0f1218, rgba(20, 20, 25, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.activity-card:hover, .card-base:hover {
+  border-color: #b21c2a;
+  transform: translateY(-5px);
+}
+
+/* =========================================
+   7. ACTIVIDADES GRID
+   ========================================= */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.activity-card {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.activity-card:hover {
+  border-color: #c59d4d;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+.activity-card:hover .card-img-wrapper img {
+  transform: scale(1.1);
+  opacity: 1;
+}
+.activity-card .card-img-wrapper {
+  margin: 0;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background-color: #000;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.activity-card .card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+.activity-card .card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.activity-card .card-content h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-family: "Cinzel", serif;
+}
+
+.tracking-wider {
+  letter-spacing: 0.1em;
+}
+
+.font-cinzel {
+  font-family: "Cinzel", serif;
+}
+
+/* =========================================
+   8. FORMULARIOS (Dark UI)
+   ========================================= */
+.join-form {
+  background-color: #0f1218;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.join-form label {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.4rem;
+}
+
+.form-control, .form-select {
+  background-color: #050505 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 4px;
+}
+.form-control:focus, .form-select:focus {
+  background-color: #000 !important;
+  border-color: #c59d4d !important;
+  box-shadow: 0 0 0 2px rgba(197, 157, 77, 0.2);
+}
+.form-control::placeholder, .form-select::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.alert-dark {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: rgb(214, 213, 213);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.custom-check .form-check-input {
+  background-color: #000;
+  border-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+.custom-check .form-check-input:checked {
+  background-color: #b21c2a;
+  border-color: #b21c2a;
+}
+
+/* =========================================
+   9. SECCIONES ESPECÍFICAS: "EL PACTO"
+   ========================================= */
+.quote-box {
+  border-left: 3px solid #b21c2a;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(90deg, rgba(178, 28, 42, 0.1), transparent);
+  color: #fff;
+  font-style: italic;
+  font-family: "Cinzel", serif;
+}
+
+.stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stat-card {
+  background: #0f1218;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 4px solid #c59d4d;
+  padding: 1.5rem;
+  border-radius: 0 8px 8px 0;
+  transition: transform 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateX(10px);
+  background: rgba(197, 157, 77, 0.05);
+}
+.stat-card h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #c59d4d;
+  margin-bottom: 0.2rem;
+  letter-spacing: 1px;
+}
+.stat-card p {
+  margin: 0;
+  color: rgb(214, 213, 213);
+  font-size: 0.95rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: 0.3s;
+}
+.feature-item:hover {
+  border-color: #b21c2a;
+  background: rgba(178, 28, 42, 0.05);
+  transform: translateY(-5px);
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 768px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.comparison-col {
+  background: #0f1218;
+  padding: 2rem;
+  border-radius: 8px;
+  border-top: 4px solid transparent;
+}
+.comparison-col.positive {
+  border-top-color: #27ae60;
+}
+.comparison-col.negative {
+  border-top-color: #b21c2a;
+}
+
+.col-header {
+  font-family: "Cinzel", serif;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.check-list li, .cross-list li {
+  list-style: none;
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.8rem;
+  color: rgb(214, 213, 213);
+  font-size: 0.95rem;
+}
+.check-list li::before, .cross-list li::before {
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.check-list li::before {
+  content: "✓";
+  color: #27ae60;
+  font-size: 1.2rem;
+}
+
+.cross-list li::before {
+  content: "✕";
+  color: #b21c2a;
+  font-size: 1.1rem;
+}
+
+/* =========================================
+   10. MERCADO NEGRO 
+   ========================================= */
+.construction-hero {
+  position: relative;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.locked-market-badge {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+.locked-market-badge:hover .locked-skull {
+  filter: grayscale(0%) brightness(80%);
+  opacity: 1;
+}
+
+.skull-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.locked-skull {
+  width: 100%;
+  height: 100%;
+  filter: grayscale(100%) brightness(30%);
+  opacity: 0.6;
+  transition: 0.5s ease;
+}
+
+.lock-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+  animation: pulse 2s infinite;
+}
+
+.stamp-box {
+  display: inline-block;
+  border: 2px solid #c59d4d;
+  color: #c59d4d;
+  padding: 0.5rem 2rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  font-family: "Cinzel", serif;
+  background: rgba(0, 0, 0, 0.6);
+  transform: rotate(-3deg);
+  box-shadow: 0 0 20px rgba(197, 157, 77, 0.2);
+  backdrop-filter: blur(2px);
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+/* =========================================
+   11. FOOTER & RESPONSIVE
+   ========================================= */
+.site-footer {
+  background-color: #8a121e;
+  border-top: 1px solid #c59d4d;
+  padding: 3rem 0;
+  text-align: center;
+  margin-top: auto;
+}
+
+@media (max-width: 991px) {
+  .hero-flex-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-main {
+    margin: 0 auto;
+  }
+  .video-hero {
+    height: 100vh;
+  }
+  .layout-flex {
+    gap: 4rem;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

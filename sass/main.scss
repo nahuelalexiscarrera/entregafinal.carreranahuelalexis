@@ -1,0 +1,632 @@
+/* =========================================
+   1. CONFIGURACIÓN Y VARIABLES (The Caerleon Theme)
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+// --- Variables SCSS (Pre-compilación) ---
+$col-blood:       #b21c2a;
+$col-blood-dark:  #8a121e;
+$col-gold:        #c59d4d;
+$col-void:        #000000;       // Fondo Página
+$col-void-light:  #0f1218;       // Fondo Tarjetas
+$col-text:        #f8f7f7;
+$col-text-muted:  rgb(214, 213, 213);
+
+$font-display:    'Cinzel', serif;
+$font-body:       'Inter', sans-serif;
+
+// --- Variables CSS (Runtime) ---
+:root {
+    --col-blood: #{$col-blood};
+    --col-blood-dark: #{$col-blood-dark};
+    --col-gold: #{$col-gold};
+    --col-void: #{$col-void};
+    --col-void-light: #{$col-void-light};
+    --col-text: #{$col-text};
+    --col-text-muted: #{$col-text-muted};
+    
+    --font-display: #{$font-display};
+    --font-body: #{$font-body};
+}
+
+/* =========================================
+   2. RESET Y BASE
+   ========================================= */
+body {
+    background-color: $col-void;
+    color: $col-text;
+    font-family: $font-body;
+    line-height: 1.6;
+    overflow-x: hidden;
+    
+    // Sticky Footer Setup
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, .navbar-brand {
+    font-family: $font-display;
+    color: #f8f7f7;
+    letter-spacing: 0.02em;
+}
+
+a { 
+    text-decoration: none; 
+    transition: 0.3s ease; 
+}
+
+ul { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
+ 
+ 
+
+
+/* =========================================
+   3. HEADER Y NAVBAR
+   ========================================= */
+.site-header {
+    background: rgba(5, 7, 10, 0.90); // Casi opaco
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba($col-gold, 0.2); // Borde dorado sutil
+}
+
+.logo-text {
+    color: $col-gold;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+.navbar-nav {
+    .nav-link {
+        color: $col-text-muted !important;
+        font-family: $font-body;
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        position: relative;
+        padding: 0.5rem 1rem !important;
+
+        // Hover y Active
+        &:hover,
+        &.active {
+            color: #fff !important;
+            
+            &::after {
+                width: 80%;
+            }
+        }
+
+        // Línea animada dorada
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: $col-gold;
+            transition: width 0.3s ease;
+        }
+    }
+}
+
+// Icono Hamburguesa
+.navbar-toggler {
+    border: none; 
+    box-shadow: none !important;
+    
+    .navbar-toggler-icon {
+        filter: invert(1);
+    }
+}
+
+/* =========================================
+   4. LAYOUT SYSTEM
+   ========================================= */
+.layout-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem; 
+    padding-bottom: 4rem;
+}
+
+.section {
+    position: relative;
+    width: 100%;
+}
+
+// Utility
+.text-gold { color: $col-gold !important; }
+.bg-darker { background-color: darken($col-void, 2%); }
+.border-white-10 { border-color: rgba(233, 232, 232, 0.1) !important; }
+
+/* =========================================
+   5. HERO & VIDEO
+   ========================================= */
+.video-hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80vh; 
+    z-index: -1;
+    overflow: hidden;
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+    }
+
+    .video-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(5,7,10,0.4) 0%, $col-void 100%);
+    }
+}
+
+.hero {
+    margin-top: 10vh; 
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+
+    &-flex-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &-eyebrow {
+        color: $col-gold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+}
+
+// Hero Específico "El Pacto"
+.hero-pacto {
+    position: relative;
+    padding: 6rem 0;
+    margin-top: -1px;
+    background-color: $col-void;
+
+    .hero-bg-image {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.4) sepia(0.2);
+        z-index: 0;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent, $col-void);
+        z-index: 0;
+    }
+}
+
+/* =========================================
+   6. COMPONENTES UI (Botones y Cards)
+   ========================================= */
+
+// Botones
+.btn-primary {
+    background-color: $col-blood !important;
+    border-color: $col-blood !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.8rem 1.8rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        background-color: $col-blood-dark !important;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba($col-blood, 0.5);
+    }
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: 0.3s;
+
+    &:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: #fff;
+        color: #fff;
+    }
+}
+
+.hover-white:hover {
+    color: #fff !important;
+    text-decoration: underline !important;
+}
+
+// Tarjetas Base (Mixin o Extends)
+%card-base-style {
+    background: linear-gradient(145deg, $col-void-light, rgba(20, 20, 25, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        border-color: $col-blood;
+        transform: translateY(-5px);
+    }
+}
+
+.card-base {
+    @extend %card-base-style;
+}
+
+
+
+/* =========================================
+   7. ACTIVIDADES GRID
+   ========================================= */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.activity-card {
+    @extend %card-base-style;
+    padding: 0; // Reset padding para img interna
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+    // Override hover específico para actividades
+    &:hover {
+        border-color: $col-gold;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+
+        .card-img-wrapper img {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+    }
+
+    .card-img-wrapper {
+        margin: 0;
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+        background-color: #000;
+        position: relative;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: transform 0.5s ease, opacity 0.3s ease;
+        }
+    }
+
+    .card-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            font-family: $font-display;
+        }
+    }
+}
+
+// Utils
+.tracking-wider { letter-spacing: 0.1em; }
+.font-cinzel { font-family: $font-display; }
+
+/* =========================================
+   8. FORMULARIOS (Dark UI)
+   ========================================= */
+.join-form {
+    background-color: $col-void-light;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+    label {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        margin-bottom: 0.4rem;
+    }
+}
+
+.form-control, .form-select {
+    background-color: #050505 !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    border-radius: 4px;
+
+    &:focus {
+        background-color: #000 !important;
+        border-color: $col-gold !important;
+        box-shadow: 0 0 0 2px rgba($col-gold, 0.2);
+    }
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.alert-dark {
+    background-color: rgba(255,255,255,0.05);
+    color: $col-text-muted;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.custom-check {
+    .form-check-input {
+        background-color: #000;
+        border-color: rgba(255,255,255,0.3);
+        cursor: pointer;
+
+        &:checked {
+            background-color: $col-blood;
+            border-color: $col-blood;
+        }
+    }
+}
+
+/* =========================================
+   9. SECCIONES ESPECÍFICAS: "EL PACTO"
+   ========================================= */
+
+.quote-box {
+    border-left: 3px solid $col-blood;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(90deg, rgba($col-blood, 0.1), transparent);
+    color: #fff;
+    font-style: italic;
+    font-family: $font-display;
+}
+
+// Stats Grid
+.stats-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.stat-card {
+    background: $col-void-light;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 4px solid $col-gold;
+    padding: 1.5rem;
+    border-radius: 0 8px 8px 0;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateX(10px);
+        background: rgba($col-gold, 0.05);
+    }
+
+    h3 {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        color: $col-gold;
+        margin-bottom: 0.2rem;
+        letter-spacing: 1px;
+    }
+
+    p {
+        margin: 0;
+        color: $col-text-muted;
+        font-size: 0.95rem;
+    }
+}
+
+// Features Grid
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.feature-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: 0.3s;
+
+    &:hover {
+        border-color: $col-blood;
+        background: rgba($col-blood, 0.05);
+        transform: translateY(-5px);
+    }
+}
+
+// Comparison Grid
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+
+    @media (max-width: 768px) { 
+        grid-template-columns: 1fr; 
+    }
+}
+
+.comparison-col {
+    background: $col-void-light;
+    padding: 2rem;
+    border-radius: 8px;
+    border-top: 4px solid transparent;
+
+    &.positive { border-top-color: #27ae60; }
+    &.negative { border-top-color: $col-blood; }
+}
+
+.col-header {
+    font-family: $font-display;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+// Listas
+.check-list, .cross-list {
+    li {
+        list-style: none;
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 0.8rem;
+        color: $col-text-muted;
+        font-size: 0.95rem;
+
+        &::before {
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+    }
+}
+
+.check-list li::before {
+    content: '✓';
+    color: #27ae60;
+    font-size: 1.2rem;
+}
+
+.cross-list li::before {
+    content: '✕';
+    color: $col-blood;
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   10. MERCADO NEGRO 
+   ========================================= */
+.construction-hero {
+    position: relative;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.locked-market-badge {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:hover .locked-skull {
+        filter: grayscale(0%) brightness(80%);
+        opacity: 1;
+    }
+}
+
+.skull-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.locked-skull {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%) brightness(30%);
+    opacity: 0.6;
+    transition: 0.5s ease;
+}
+
+.lock-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    text-shadow: 0 5px 10px rgba(0,0,0,0.8);
+    animation: pulse 2s infinite;
+}
+
+.stamp-box {
+    display: inline-block;
+    border: 2px solid $col-gold;
+    color: $col-gold;
+    padding: 0.5rem 2rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    font-family: $font-display;
+    background: rgba(0,0,0,0.6);
+    transform: rotate(-3deg);
+    box-shadow: 0 0 20px rgba($col-gold, 0.2);
+    backdrop-filter: blur(2px);
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* =========================================
+   11. FOOTER & RESPONSIVE
+   ========================================= */
+.site-footer {
+    background-color:$col-blood-dark;
+    border-top: 1px solid $col-gold;
+    padding: 3rem 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+// Media Queries
+@media (max-width: 991px) {
+    .hero-flex-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-main {
+        margin: 0 auto;
+    }
+    
+    .video-hero {
+        height: 100vh; 
+    }
+    
+    .layout-flex {
+        gap: 4rem; 
+    }
+}
