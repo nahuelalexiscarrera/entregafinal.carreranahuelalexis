@@ -1,6 +1,4 @@
-/* =========================================
-   1. CONFIGURACIÓN Y VARIABLES (The Caerleon Theme)
-   ========================================= */
+/* CONFIGURACIÓN Y VARIABLES*/
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap');
 
 // --- Variables SCSS (Pre-compilación) ---
@@ -15,7 +13,7 @@ $col-text-muted:  rgb(214, 213, 213);
 $font-display:    'Cinzel', serif;
 $font-body:       'Inter', sans-serif;
 
-// --- Variables CSS (Runtime) ---
+// --- Variables CSS ---
 :root {
     --col-blood: #{$col-blood};
     --col-blood-dark: #{$col-blood-dark};
@@ -29,9 +27,7 @@ $font-body:       'Inter', sans-serif;
     --font-body: #{$font-body};
 }
 
-/* =========================================
-   2. RESET Y BASE
-   ========================================= */
+/*RESET Y BASE*/
 body {
     background-color: $col-void;
     color: $col-text;
@@ -39,7 +35,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     
-    // Sticky Footer Setup
+    // Footer al fondo
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -66,9 +62,7 @@ ul {
  
 
 
-/* =========================================
-   3. HEADER Y NAVBAR
-   ========================================= */
+/*HEADER Y NAVBAR*/
 .site-header {
     background: rgba(5, 7, 10, 0.90); // Casi opaco
     backdrop-filter: blur(10px);
@@ -127,9 +121,7 @@ ul {
     }
 }
 
-/* =========================================
-   4. LAYOUT SYSTEM
-   ========================================= */
+/*LAYOUT SYSTEM*/
 .layout-flex {
     display: flex;
     flex-direction: column;
@@ -147,9 +139,7 @@ ul {
 .bg-darker { background-color: darken($col-void, 2%); }
 .border-white-10 { border-color: rgba(233, 232, 232, 0.1) !important; }
 
-/* =========================================
-   5. HERO & VIDEO
-   ========================================= */
+/*HERO & VIDEO*/
 .video-hero {
     position: absolute;
     top: 0;
@@ -195,6 +185,7 @@ ul {
     }
 }
 
+
 // Hero Específico "El Pacto"
 .hero-pacto {
     position: relative;
@@ -219,9 +210,7 @@ ul {
     }
 }
 
-/* =========================================
-   6. COMPONENTES UI (Botones y Cards)
-   ========================================= */
+/*COMPONENTES UI (Botones y Cards)*/
 
 // Botones
 .btn-primary {
@@ -282,9 +271,7 @@ ul {
 
 
 
-/* =========================================
-   7. ACTIVIDADES GRID
-   ========================================= */
+/* ACTIVIDADES*/
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -348,9 +335,7 @@ ul {
 .tracking-wider { letter-spacing: 0.1em; }
 .font-cinzel { font-family: $font-display; }
 
-/* =========================================
-   8. FORMULARIOS (Dark UI)
-   ========================================= */
+/*FORMULARIOS*/
 .join-form {
     background-color: $col-void-light;
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -402,9 +387,7 @@ ul {
     }
 }
 
-/* =========================================
-   9. SECCIONES ESPECÍFICAS: "EL PACTO"
-   ========================================= */
+/*SECCIONES ESPECÍFICAS: "EL PACTO"*/
 
 .quote-box {
     border-left: 3px solid $col-blood;
@@ -531,9 +514,7 @@ ul {
     font-size: 1.1rem;
 }
 
-/* =========================================
-   10. MERCADO NEGRO 
-   ========================================= */
+/* MERCADO NEGRO */
 .construction-hero {
     position: relative;
     height: 85vh;
@@ -600,9 +581,7 @@ ul {
     100% { transform: translate(-50%, -50%) scale(1); }
 }
 
-/* =========================================
-   11. FOOTER & RESPONSIVE
-   ========================================= */
+/* FOOTER & RESPONSIVE*/
 .site-footer {
     background-color:$col-blood-dark;
     border-top: 1px solid $col-gold;
@@ -628,5 +607,33 @@ ul {
     
     .layout-flex {
         gap: 4rem; 
+    }
+}
+/* --- EFECTO DE APARICIÓN (HUMO/NIEBLA) --- */
+
+// Estado inicial (Invisible, borroso y desplazado)
+.smoke-reveal {
+    opacity: 0;
+    filter: blur(12px); // El "humo" denso
+    transform: translateY(40px) scale(0.95);
+    transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1); // Movimiento lento y cinematográfico
+    will-change: opacity, filter, transform; // Optimización de rendimiento
+}
+
+// Estado activo (Visible, nítido y en su lugar)
+.smoke-reveal.active {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+}
+
+
+.cards-grid, .features-grid {
+    .smoke-reveal {
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+                transition-delay: #{$i * 0.15}s;
+            }
+        }
     }
 }

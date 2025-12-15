@@ -1,7 +1,5 @@
 @charset "UTF-8";
-/* =========================================
-   1. CONFIGURACIÓN Y VARIABLES (The Caerleon Theme)
-   ========================================= */
+/* CONFIGURACIÓN Y VARIABLES*/
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap");
 :root {
   --col-blood: #b21c2a;
@@ -15,9 +13,7 @@
   --font-body: Inter, sans-serif;
 }
 
-/* =========================================
-   2. RESET Y BASE
-   ========================================= */
+/*RESET Y BASE*/
 body {
   background-color: #000000;
   color: #f8f7f7;
@@ -46,9 +42,7 @@ ul {
   margin: 0;
 }
 
-/* =========================================
-   3. HEADER Y NAVBAR
-   ========================================= */
+/*HEADER Y NAVBAR*/
 .site-header {
   background: rgba(5, 7, 10, 0.9);
   backdrop-filter: blur(10px);
@@ -97,9 +91,7 @@ ul {
   filter: invert(1);
 }
 
-/* =========================================
-   4. LAYOUT SYSTEM
-   ========================================= */
+/*LAYOUT SYSTEM*/
 .layout-flex {
   display: flex;
   flex-direction: column;
@@ -124,9 +116,7 @@ ul {
   border-color: rgba(233, 232, 232, 0.1) !important;
 }
 
-/* =========================================
-   5. HERO & VIDEO
-   ========================================= */
+/*HERO & VIDEO*/
 .video-hero {
   position: absolute;
   top: 0;
@@ -189,9 +179,7 @@ ul {
   z-index: 0;
 }
 
-/* =========================================
-   6. COMPONENTES UI (Botones y Cards)
-   ========================================= */
+/*COMPONENTES UI (Botones y Cards)*/
 .btn-primary {
   background-color: #b21c2a !important;
   border-color: #b21c2a !important;
@@ -240,9 +228,7 @@ ul {
   transform: translateY(-5px);
 }
 
-/* =========================================
-   7. ACTIVIDADES GRID
-   ========================================= */
+/* ACTIVIDADES*/
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -302,9 +288,7 @@ ul {
   font-family: "Cinzel", serif;
 }
 
-/* =========================================
-   8. FORMULARIOS (Dark UI)
-   ========================================= */
+/*FORMULARIOS*/
 .join-form {
   background-color: #0f1218;
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -350,9 +334,7 @@ ul {
   border-color: #b21c2a;
 }
 
-/* =========================================
-   9. SECCIONES ESPECÍFICAS: "EL PACTO"
-   ========================================= */
+/*SECCIONES ESPECÍFICAS: "EL PACTO"*/
 .quote-box {
   border-left: 3px solid #b21c2a;
   padding: 1rem 1.5rem;
@@ -471,9 +453,7 @@ ul {
   font-size: 1.1rem;
 }
 
-/* =========================================
-   10. MERCADO NEGRO 
-   ========================================= */
+/* MERCADO NEGRO */
 .construction-hero {
   position: relative;
   height: 85vh;
@@ -544,9 +524,7 @@ ul {
     transform: translate(-50%, -50%) scale(1);
   }
 }
-/* =========================================
-   11. FOOTER & RESPONSIVE
-   ========================================= */
+/* FOOTER & RESPONSIVE*/
 .site-footer {
   background-color: #8a121e;
   border-top: 1px solid #c59d4d;
@@ -569,6 +547,51 @@ ul {
   .layout-flex {
     gap: 4rem;
   }
+}
+/* --- EFECTO DE APARICIÓN (HUMO/NIEBLA) --- */
+.smoke-reveal {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(40px) scale(0.95);
+  transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, filter, transform;
+}
+
+.smoke-reveal.active {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+}
+
+.cards-grid .smoke-reveal:nth-child(1), .features-grid .smoke-reveal:nth-child(1) {
+  transition-delay: 0.15s;
+}
+.cards-grid .smoke-reveal:nth-child(2), .features-grid .smoke-reveal:nth-child(2) {
+  transition-delay: 0.3s;
+}
+.cards-grid .smoke-reveal:nth-child(3), .features-grid .smoke-reveal:nth-child(3) {
+  transition-delay: 0.45s;
+}
+.cards-grid .smoke-reveal:nth-child(4), .features-grid .smoke-reveal:nth-child(4) {
+  transition-delay: 0.6s;
+}
+.cards-grid .smoke-reveal:nth-child(5), .features-grid .smoke-reveal:nth-child(5) {
+  transition-delay: 0.75s;
+}
+.cards-grid .smoke-reveal:nth-child(6), .features-grid .smoke-reveal:nth-child(6) {
+  transition-delay: 0.9s;
+}
+.cards-grid .smoke-reveal:nth-child(7), .features-grid .smoke-reveal:nth-child(7) {
+  transition-delay: 1.05s;
+}
+.cards-grid .smoke-reveal:nth-child(8), .features-grid .smoke-reveal:nth-child(8) {
+  transition-delay: 1.2s;
+}
+.cards-grid .smoke-reveal:nth-child(9), .features-grid .smoke-reveal:nth-child(9) {
+  transition-delay: 1.35s;
+}
+.cards-grid .smoke-reveal:nth-child(10), .features-grid .smoke-reveal:nth-child(10) {
+  transition-delay: 1.5s;
 }
 
 /*# sourceMappingURL=main.css.map */
