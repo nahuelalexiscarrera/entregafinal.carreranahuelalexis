@@ -1,19 +1,21 @@
-/* CONFIGURACIÓN Y VARIABLES*/
+/* =========================================
+   1. CONFIGURACIÓN Y VARIABLES
+   ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap');
 
-// --- Variables SCSS (Pre-compilación) ---
+// --- Variables SCSS ---
 $col-blood:       #b21c2a;
 $col-blood-dark:  #8a121e;
 $col-gold:        #c59d4d;
-$col-void:        #000000;       // Fondo Página
-$col-void-light:  #0f1218;       // Fondo Tarjetas
+$col-void:        #000000;        // Fondo Página
+$col-void-light:  #0f1218;        // Fondo Tarjetas
 $col-text:        #f8f7f7;
 $col-text-muted:  rgb(214, 213, 213);
 
 $font-display:    'Cinzel', serif;
 $font-body:       'Inter', sans-serif;
 
-// --- Variables CSS ---
+// --- Variables CSS (Custom Properties) ---
 :root {
     --col-blood: #{$col-blood};
     --col-blood-dark: #{$col-blood-dark};
@@ -22,20 +24,19 @@ $font-body:       'Inter', sans-serif;
     --col-void-light: #{$col-void-light};
     --col-text: #{$col-text};
     --col-text-muted: #{$col-text-muted};
-    
     --font-display: #{$font-display};
     --font-body: #{$font-body};
 }
 
-/*RESET Y BASE*/
+/* =========================================
+   2. RESET Y BASE
+   ========================================= */
 body {
     background-color: $col-void;
     color: $col-text;
     font-family: $font-body;
     line-height: 1.6;
     overflow-x: hidden;
-    
-    // Footer al fondo
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -43,7 +44,7 @@ body {
 
 h1, h2, h3, h4, .navbar-brand {
     font-family: $font-display;
-    color: #f8f7f7;
+    color: $col-text;
     letter-spacing: 0.02em;
 }
 
@@ -58,15 +59,39 @@ ul {
     margin: 0; 
 }
 
- 
- 
+/* =========================================
+   3. LAYOUT & UTILIDADES
+   ========================================= */
+.layout-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem; 
+    padding-bottom: 4rem;
 
+    @media (max-width: 991px) {
+        gap: 4rem; 
+    }
+}
 
-/*HEADER Y NAVBAR*/
+.section {
+    position: relative;
+    width: 100%;
+}
+
+// Clases de utilidad
+.text-gold { color: $col-gold !important; }
+.bg-darker { background-color: darken($col-void, 2%); }
+.border-white-10 { border-color: rgba(233, 232, 232, 0.1) !important; }
+.tracking-wider { letter-spacing: 0.1em; }
+.font-cinzel { font-family: $font-display; }
+
+/* =========================================
+   4. HEADER Y NAVEGACIÓN
+   ========================================= */
 .site-header {
-    background: rgba(5, 7, 10, 0.90); // Casi opaco
+    background: rgba(5, 7, 10, 0.90);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba($col-gold, 0.2); // Borde dorado sutil
+    border-bottom: 1px solid rgba($col-gold, 0.2);
 }
 
 .logo-text {
@@ -76,142 +101,44 @@ ul {
     font-size: 1.1rem;
 }
 
-.navbar-nav {
-    .nav-link {
-        color: $col-text-muted !important;
-        font-family: $font-body;
-        font-size: 0.9rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        position: relative;
-        padding: 0.5rem 1rem !important;
+.navbar-nav .nav-link {
+    color: $col-text-muted !important;
+    font-family: $font-body;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    position: relative;
+    padding: 0.5rem 1rem !important;
 
-        // Hover y Active
-        &:hover,
-        &.active {
-            color: #fff !important;
-            
-            &::after {
-                width: 80%;
-            }
-        }
+    // Estados Interactivos
+    &:hover, &.active {
+        color: #fff !important;
+        &::after { width: 80%; }
+    }
 
-        // Línea animada dorada
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background-color: $col-gold;
-            transition: width 0.3s ease;
-        }
+    // Línea animada inferior
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: $col-gold;
+        transition: width 0.3s ease;
     }
 }
 
-// Icono Hamburguesa
 .navbar-toggler {
     border: none; 
     box-shadow: none !important;
-    
-    .navbar-toggler-icon {
-        filter: invert(1);
-    }
+    .navbar-toggler-icon { filter: invert(1); }
 }
 
-/*LAYOUT SYSTEM*/
-.layout-flex {
-    display: flex;
-    flex-direction: column;
-    gap: 6rem; 
-    padding-bottom: 4rem;
-}
-
-.section {
-    position: relative;
-    width: 100%;
-}
-
-// Utility
-.text-gold { color: $col-gold !important; }
-.bg-darker { background-color: darken($col-void, 2%); }
-.border-white-10 { border-color: rgba(233, 232, 232, 0.1) !important; }
-
-/*HERO & VIDEO*/
-.video-hero {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80vh; 
-    z-index: -1;
-    overflow: hidden;
-
-    video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.5;
-    }
-
-    .video-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(5,7,10,0.4) 0%, $col-void 100%);
-    }
-}
-
-.hero {
-    margin-top: 10vh; 
-    min-height: 50vh;
-    display: flex;
-    align-items: center;
-
-    &-flex-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    &-eyebrow {
-        color: $col-gold;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: 0.85rem;
-        margin-bottom: 1rem;
-        font-weight: 700;
-    }
-}
-
-
-// Hero Específico "El Pacto"
-.hero-pacto {
-    position: relative;
-    padding: 6rem 0;
-    margin-top: -1px;
-    background-color: $col-void;
-
-    .hero-bg-image {
-        position: absolute;
-        inset: 0;
-        background-size: cover;
-        background-position: center;
-        filter: brightness(0.4) sepia(0.2);
-        z-index: 0;
-    }
-
-    .hero-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, transparent, $col-void);
-        z-index: 0;
-    }
-}
-
-/*COMPONENTES UI (Botones y Cards)*/
-
+/* =========================================
+   5. COMPONENTES UI (Botones y Cards)
+   ========================================= */
 // Botones
 .btn-primary {
     background-color: $col-blood !important;
@@ -251,7 +178,7 @@ ul {
     text-decoration: underline !important;
 }
 
-// Tarjetas Base (Mixin o Extends)
+// Estilos Base para Tarjetas
 %card-base-style {
     background: linear-gradient(145deg, $col-void-light, rgba(20, 20, 25, 0.8));
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -269,9 +196,96 @@ ul {
     @extend %card-base-style;
 }
 
+/* =========================================
+   6. HERO SECTIONS
+   ========================================= */
+// Video Hero (Fondo)
+.video-hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80vh; 
+    z-index: -1;
+    overflow: hidden;
 
+    @media (max-width: 991px) { height: 100vh; }
 
-/* ACTIVIDADES*/
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+    }
+
+    .video-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(5,7,10,0.4) 0%, $col-void 100%);
+    }
+}
+
+// Hero Principal (Contenido)
+.hero {
+    margin-top: 10vh; 
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+
+    &-flex-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media (max-width: 991px) {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    &-main {
+        @media (max-width: 991px) { margin: 0 auto; }
+    }
+
+    &-eyebrow {
+        color: $col-gold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+}
+
+// Hero Secundario ("El Pacto")
+.hero-pacto {
+    position: relative;
+    padding: 6rem 0;
+    margin-top: -1px;
+    background-color: $col-void;
+
+    .hero-bg-image {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.4) sepia(0.2);
+        z-index: 0;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent, $col-void);
+        z-index: 0;
+    }
+}
+
+/* =========================================
+   7. SECCIONES ESPECÍFICAS
+   ========================================= */
+
+// --- Grid de Actividades ---
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -282,13 +296,12 @@ ul {
 
 .activity-card {
     @extend %card-base-style;
-    padding: 0; // Reset padding para img interna
+    padding: 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     height: 100%;
     
-    // Override hover específico para actividades
     &:hover {
         border-color: $col-gold;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
@@ -331,11 +344,126 @@ ul {
     }
 }
 
-// Utils
-.tracking-wider { letter-spacing: 0.1em; }
-.font-cinzel { font-family: $font-display; }
+// --- Carrusel Oscuro (Dark Carousel) ---
+.dark-carousel-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background-color: #000;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
 
-/*FORMULARIOS*/
+    @media (max-width: 768px) { height: 400px; }
+    
+    // Vignette Overlay
+    .vignette-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+        background: radial-gradient(circle, transparent 40%, #000 100%);
+        pointer-events: none;
+        border: 1px solid rgba($col-gold, 0.1);
+    }
+}
+
+.carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 1.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.active {
+        opacity: 1;
+        z-index: 2;
+
+        .slide-bg img { transform: scale(1.1); }
+        .slide-content { transform: translateY(0); opacity: 1; }
+    }
+
+    .slide-bg {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.0);
+            transition: transform 6s linear;
+            filter: brightness(0.6) sepia(0.2);
+        }
+    }
+
+    .slide-content {
+        position: relative;
+        z-index: 20;
+        text-align: center;
+        max-width: 600px;
+        padding: 2rem;
+        transform: translateY(30px);
+        opacity: 0;
+        transition: all 1s ease-out 0.5s;
+
+        h3 {
+            text-shadow: 0 4px 10px #000;
+            margin-bottom: 1rem;
+        }
+        p {
+            text-shadow: 0 2px 5px #000;
+            font-weight: 500;
+        }
+    }
+}
+
+.slide-decoration {
+    margin: 1.5rem auto 0;
+    width: 60px;
+    height: 3px;
+    background-color: $col-blood;
+    box-shadow: 0 0 10px $col-blood;
+}
+
+.carousel-indicators-custom {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    display: flex;
+    gap: 10px;
+
+    .indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba($col-gold, 0.3);
+        cursor: pointer;
+        transition: 0.3s;
+        padding: 0;
+
+        &.active {
+            background: $col-gold;
+            box-shadow: 0 0 10px $col-gold;
+            transform: scale(1.2);
+        }
+    }
+}
+
+// --- Formularios ---
 .join-form {
     background-color: $col-void-light;
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -362,10 +490,7 @@ ul {
         border-color: $col-gold !important;
         box-shadow: 0 0 0 2px rgba($col-gold, 0.2);
     }
-
-    &::placeholder {
-        color: rgba(255, 255, 255, 0.3);
-    }
+    &::placeholder { color: rgba(255, 255, 255, 0.3); }
 }
 
 .alert-dark {
@@ -374,21 +499,18 @@ ul {
     border: 1px solid rgba(255,255,255,0.1);
 }
 
-.custom-check {
-    .form-check-input {
-        background-color: #000;
-        border-color: rgba(255,255,255,0.3);
-        cursor: pointer;
+.custom-check .form-check-input {
+    background-color: #000;
+    border-color: rgba(255,255,255,0.3);
+    cursor: pointer;
 
-        &:checked {
-            background-color: $col-blood;
-            border-color: $col-blood;
-        }
+    &:checked {
+        background-color: $col-blood;
+        border-color: $col-blood;
     }
 }
 
-/*SECCIONES ESPECÍFICAS: "EL PACTO"*/
-
+// --- Stats, Quotes & Features ---
 .quote-box {
     border-left: 3px solid $col-blood;
     padding: 1rem 1.5rem;
@@ -398,7 +520,6 @@ ul {
     font-family: $font-display;
 }
 
-// Stats Grid
 .stats-grid {
     display: flex;
     flex-direction: column;
@@ -417,7 +538,6 @@ ul {
         transform: translateX(10px);
         background: rgba($col-gold, 0.05);
     }
-
     h3 {
         font-size: 0.9rem;
         text-transform: uppercase;
@@ -425,15 +545,9 @@ ul {
         margin-bottom: 0.2rem;
         letter-spacing: 1px;
     }
-
-    p {
-        margin: 0;
-        color: $col-text-muted;
-        font-size: 0.95rem;
-    }
+    p { margin: 0; color: $col-text-muted; font-size: 0.95rem; }
 }
 
-// Features Grid
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -455,66 +569,7 @@ ul {
     }
 }
 
-// Comparison Grid
-.comparison-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-
-    @media (max-width: 768px) { 
-        grid-template-columns: 1fr; 
-    }
-}
-
-.comparison-col {
-    background: $col-void-light;
-    padding: 2rem;
-    border-radius: 8px;
-    border-top: 4px solid transparent;
-
-    &.positive { border-top-color: #27ae60; }
-    &.negative { border-top-color: $col-blood; }
-}
-
-.col-header {
-    font-family: $font-display;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    font-size: 1.1rem;
-    text-align: center;
-}
-
-// Listas
-.check-list, .cross-list {
-    li {
-        list-style: none;
-        position: relative;
-        padding-left: 2rem;
-        margin-bottom: 0.8rem;
-        color: $col-text-muted;
-        font-size: 0.95rem;
-
-        &::before {
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-    }
-}
-
-.check-list li::before {
-    content: '✓';
-    color: #27ae60;
-    font-size: 1.2rem;
-}
-
-.cross-list li::before {
-    content: '✕';
-    color: $col-blood;
-    font-size: 1.1rem;
-}
-
-/* MERCADO NEGRO */
+// --- Mercado Negro ---
 .construction-hero {
     position: relative;
     height: 85vh;
@@ -575,59 +630,86 @@ ul {
     backdrop-filter: blur(2px);
 }
 
+// --- Tablas y Listas ---
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    @media (max-width: 768px) { grid-template-columns: 1fr; }
+}
+
+.comparison-col {
+    background: $col-void-light;
+    padding: 2rem;
+    border-radius: 8px;
+    border-top: 4px solid transparent;
+
+    &.positive { border-top-color: #27ae60; }
+    &.negative { border-top-color: $col-blood; }
+}
+
+.col-header {
+    font-family: $font-display;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.check-list li, .cross-list li {
+    list-style: none;
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.8rem;
+    color: $col-text-muted;
+    font-size: 0.95rem;
+
+    &::before {
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
+}
+
+.check-list li::before { content: '✓'; color: #27ae60; font-size: 1.2rem; }
+.cross-list li::before { content: '✕'; color: $col-blood; font-size: 1.1rem; }
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
+.site-footer {
+    background-color:$col-void;
+    border-top: 1px solid transparent;
+    padding: 3rem 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+/* =========================================
+   9. ANIMACIONES (Keyframes & Effects)
+   ========================================= */
 @keyframes pulse {
     0% { transform: translate(-50%, -50%) scale(1); }
     50% { transform: translate(-50%, -50%) scale(1.1); }
     100% { transform: translate(-50%, -50%) scale(1); }
 }
 
-/* FOOTER & RESPONSIVE*/
-.site-footer {
-    background-color:$col-blood-dark;
-    border-top: 1px solid $col-gold;
-    padding: 3rem 0;
-    text-align: center;
-    margin-top: auto;
-}
-
-// Media Queries
-@media (max-width: 991px) {
-    .hero-flex-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .hero-main {
-        margin: 0 auto;
-    }
-    
-    .video-hero {
-        height: 100vh; 
-    }
-    
-    .layout-flex {
-        gap: 4rem; 
-    }
-}
-/* --- EFECTO DE APARICIÓN (HUMO/NIEBLA) --- */
-
-// Estado inicial (Invisible, borroso y desplazado)
+// Efecto Smoke Reveal
 .smoke-reveal {
     opacity: 0;
-    filter: blur(12px); // El "humo" denso
+    filter: blur(12px);
     transform: translateY(40px) scale(0.95);
-    transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1); // Movimiento lento y cinematográfico
-    will-change: opacity, filter, transform; // Optimización de rendimiento
+    transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, filter, transform;
+
+    &.active {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0) scale(1);
+    }
 }
 
-// Estado activo (Visible, nítido y en su lugar)
-.smoke-reveal.active {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0) scale(1);
-}
-
-
+// Retrasos escalonados para grids
 .cards-grid, .features-grid {
     .smoke-reveal {
         @for $i from 1 through 10 {

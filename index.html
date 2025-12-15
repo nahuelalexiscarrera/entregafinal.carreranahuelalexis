@@ -4,15 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Taberna Calavera: Comunidad de Albion Online en Caerleon. PvP, PvE y Mercado Negro.">
+  <meta name="description" content="Taberna Calavera: Comunidad de Albion Online en Caerleon. PvP, PvE y Mercado Negro.">
   <title>Taberna Calavera · Comunidad de Albion</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
-<!--NAVLOGO-->
 
 <body>
+
   <header class="site-header sticky-top">
     <nav class="navbar navbar-expand-lg">
       <div class="container">
@@ -20,7 +19,7 @@
           <img src="img/logo_taberna.png" alt="Logo del Pacto Calavera" width="50" height="50">
           <span class="logo-text ms-2">Taberna Calavera</span>
         </a>
-        <!--NAV DESDE BOOSTRAP-->
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
           aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -40,7 +39,7 @@
       </div>
     </nav>
   </header>
-  <!--VIDEO HERO-->
+
   <main class="site-main layout-flex">
 
     <section class="video-hero">
@@ -57,8 +56,6 @@
             Somos la comunidad de Albion que unirá a todo Caerleon en honor al Pacto Calavera.
           </p>
 
-          <!--BOTONES DISCORD+LINK DE ACTIVIDADES-->
-
           <div class="d-flex gap-3 flex-wrap">
             <a href="https://discord.gg/Kq7NRcdQyq" class="btn btn-primary" target="_blank" rel="noopener">
               Entrar a la taberna
@@ -72,8 +69,8 @@
         <div class="hero-aside"></div>
       </div>
     </section>
-    <!--SECCION RESUMEN DE PACTO-->
-    <section class="section smoke-reveal"> <!--efecto humo-->
+
+    <section class="section smoke-reveal">
       <section id="pacto" class="section">
         <div class="container">
           <div class="row align-items-center">
@@ -92,10 +89,10 @@
         </div>
       </section>
     </section>
-    <!--SECCION RESUMEN DE ACTIVIDADES, MERCADO Y FORMULARIO-->
-    <section class="smoke-reveal"> <!--efecto humo-->
+
+    <section class="smoke-reveal">
       <section id="actividades" class="section bg-darker">
-        <se class="container">
+        <div class="container">
           <div class="text-center mb-5">
             <h2>Actividades del Pacto</h2>
             <p>
@@ -103,33 +100,61 @@
               actividades que sostienen la comunidad.
             </p>
           </div>
+
+          <div class="dark-carousel-container">
+            <div class="vignette-overlay"></div>
+            
+            <div class="carousel-track" id="activitiesCarousel">
+              <article class="carousel-slide active">
+                <div class="slide-bg">
+                  <img src="./img/estatica.png" alt="Estáticas">
+                </div>
+                <div class="slide-content">
+                  <h3 class="display-5 text-gold font-cinzel">Estáticas</h3>
+                  <p class="lead text-light">PvE/PvP: Fama y gloria en el corazón de la dungeon.</p>
+                  <div class="slide-decoration"></div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-bg">
+                  <img src="./img/zvz.png" alt="Outposts">
+                </div>
+                <div class="slide-content">
+                  <h3 class="display-5 text-gold font-cinzel">Outposts</h3>
+                  <p class="lead text-light">Dominio territorial y control de objetivos estratégicos.</p>
+                  <div class="slide-decoration"></div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-bg">
+                  <img src="./img/gankeo.png" alt="Gankeos">
+                </div>
+                <div class="slide-content">
+                  <h3 class="display-5 text-gold font-cinzel">Gankeos</h3>
+                  <p class="lead text-light">Emboscadas letales en las rutas comerciales de Caerleon.</p>
+                  <div class="slide-decoration"></div>
+                </div>
+              </article>
+            </div>
+
+            <div class="carousel-indicators-custom" id="carouselIndicators">
+              <button class="indicator active" data-slide="0"></button>
+              <button class="indicator" data-slide="1"></button>
+              <button class="indicator" data-slide="2"></button>
+            </div>
+          </div>
+        </div>
       </section>
-
-      <div class="cards-grid">
-        <article class="activity-card smoke-reveal">
-          <h3 class="h4 text-gold">Estáticas</h3>
-          <p class="small"><strong>PvE/PvP:</strong> Subimos fama y peleamos contra facciones enemigas.</p>
-        </article>
-
-        <article class="activity-card smoke-reveal">
-          <h3 class="h4 text-gold">Outposts</h3>
-          <p class="small"><strong>PvP:</strong> Dominio sobre el territorio estratégico.</p>
-        </article>
-
-        <article class="activity-card smoke-reveal">
-          <h3 class="h4 text-gold">Gankeos</h3>
-          <p class="small"><strong>PvP:</strong> Cazar jugadores desprevenidos en zonas de riesgo.</p>
-        </article>
-      </div>
-      </div>
     </section>
-    <section class="smoke-reveal"> <!--efecto humo-->
+
+    <section class="smoke-reveal">
       <section id="mercado-negro" class="section">
         <div class="container text-center">
           <h2>Mercado negro</h2>
           <p>
-            Estamos trabajando en un contrato con mercenarios capaces de comerciar silver, items y cuentas de forma
-            segura.
+            Estamos trabajando en un contrato con mercenarios capaces de comerciar silver, items y cuentas de forma segura.
           </p>
         </div>
       </section>
@@ -191,8 +216,9 @@
         </div>
       </section>
     </section>
+
   </main>
-  <!--FOOTER COMUN A TODAS LAS PAGINAS-->
+
   <footer class="site-footer">
     <div class="container">
       <p class="mb-1">Forjada en Caerleon · El Pacto nunca se rompe.</p>
@@ -205,16 +231,14 @@
           <img src="./img/instagram.png" width="28" height="28" alt="instagram">
         </a>
         <a href="https://www.tiktok.com/@tabernacalavera_albion" target="_blank" rel="noopener">
-          <img src="./img/tiktok-square.png" width="28" height="28" alt="tiktok">
+          <img src="./img/tiktok.png" width="28" height="28" alt="tiktok">
         </a>
-
       </div>
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
 
 </body>
-
 </html>

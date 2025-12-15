@@ -1,5 +1,7 @@
 @charset "UTF-8";
-/* CONFIGURACIÓN Y VARIABLES*/
+/* =========================================
+   1. CONFIGURACIÓN Y VARIABLES
+   ========================================= */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap");
 :root {
   --col-blood: #b21c2a;
@@ -13,7 +15,9 @@
   --font-body: Inter, sans-serif;
 }
 
-/*RESET Y BASE*/
+/* =========================================
+   2. RESET Y BASE
+   ========================================= */
 body {
   background-color: #000000;
   color: #f8f7f7;
@@ -42,7 +46,49 @@ ul {
   margin: 0;
 }
 
-/*HEADER Y NAVBAR*/
+/* =========================================
+   3. LAYOUT & UTILIDADES
+   ========================================= */
+.layout-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  padding-bottom: 4rem;
+}
+@media (max-width: 991px) {
+  .layout-flex {
+    gap: 4rem;
+  }
+}
+
+.section {
+  position: relative;
+  width: 100%;
+}
+
+.text-gold {
+  color: #c59d4d !important;
+}
+
+.bg-darker {
+  background-color: black;
+}
+
+.border-white-10 {
+  border-color: rgba(233, 232, 232, 0.1) !important;
+}
+
+.tracking-wider {
+  letter-spacing: 0.1em;
+}
+
+.font-cinzel {
+  font-family: "Cinzel", serif;
+}
+
+/* =========================================
+   4. HEADER Y NAVEGACIÓN
+   ========================================= */
 .site-header {
   background: rgba(5, 7, 10, 0.9);
   backdrop-filter: blur(10px);
@@ -91,95 +137,9 @@ ul {
   filter: invert(1);
 }
 
-/*LAYOUT SYSTEM*/
-.layout-flex {
-  display: flex;
-  flex-direction: column;
-  gap: 6rem;
-  padding-bottom: 4rem;
-}
-
-.section {
-  position: relative;
-  width: 100%;
-}
-
-.text-gold {
-  color: #c59d4d !important;
-}
-
-.bg-darker {
-  background-color: black;
-}
-
-.border-white-10 {
-  border-color: rgba(233, 232, 232, 0.1) !important;
-}
-
-/*HERO & VIDEO*/
-.video-hero {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80vh;
-  z-index: -1;
-  overflow: hidden;
-}
-.video-hero video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.5;
-}
-.video-hero .video-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(5, 7, 10, 0.4) 0%, #000000 100%);
-}
-
-.hero {
-  margin-top: 10vh;
-  min-height: 50vh;
-  display: flex;
-  align-items: center;
-}
-.hero-flex-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.hero-eyebrow {
-  color: #c59d4d;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-.hero-pacto {
-  position: relative;
-  padding: 6rem 0;
-  margin-top: -1px;
-  background-color: #000000;
-}
-.hero-pacto .hero-bg-image {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.4) sepia(0.2);
-  z-index: 0;
-}
-.hero-pacto .hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, transparent, #000000);
-  z-index: 0;
-}
-
-/*COMPONENTES UI (Botones y Cards)*/
+/* =========================================
+   5. COMPONENTES UI (Botones y Cards)
+   ========================================= */
 .btn-primary {
   background-color: #b21c2a !important;
   border-color: #b21c2a !important;
@@ -228,7 +188,90 @@ ul {
   transform: translateY(-5px);
 }
 
-/* ACTIVIDADES*/
+/* =========================================
+   6. HERO SECTIONS
+   ========================================= */
+.video-hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80vh;
+  z-index: -1;
+  overflow: hidden;
+}
+@media (max-width: 991px) {
+  .video-hero {
+    height: 100vh;
+  }
+}
+.video-hero video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+.video-hero .video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(5, 7, 10, 0.4) 0%, #000000 100%);
+}
+
+.hero {
+  margin-top: 10vh;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+}
+.hero-flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 991px) {
+  .hero-flex-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+@media (max-width: 991px) {
+  .hero-main {
+    margin: 0 auto;
+  }
+}
+.hero-eyebrow {
+  color: #c59d4d;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero-pacto {
+  position: relative;
+  padding: 6rem 0;
+  margin-top: -1px;
+  background-color: #000000;
+}
+.hero-pacto .hero-bg-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.4) sepia(0.2);
+  z-index: 0;
+}
+.hero-pacto .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, #000000);
+  z-index: 0;
+}
+
+/* =========================================
+   7. SECCIONES ESPECÍFICAS
+   ========================================= */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -280,15 +323,122 @@ ul {
   font-family: "Cinzel", serif;
 }
 
-.tracking-wider {
-  letter-spacing: 0.1em;
+.dark-carousel-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: #000;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 2rem;
+}
+@media (max-width: 768px) {
+  .dark-carousel-container {
+    height: 400px;
+  }
+}
+.dark-carousel-container .vignette-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: radial-gradient(circle, transparent 40%, #000 100%);
+  pointer-events: none;
+  border: 1px solid rgba(197, 157, 77, 0.1);
 }
 
-.font-cinzel {
-  font-family: "Cinzel", serif;
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-/*FORMULARIOS*/
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+.carousel-slide.active .slide-bg img {
+  transform: scale(1.1);
+}
+.carousel-slide.active .slide-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+.carousel-slide .slide-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.carousel-slide .slide-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 6s linear;
+  filter: brightness(0.6) sepia(0.2);
+}
+.carousel-slide .slide-content {
+  position: relative;
+  z-index: 20;
+  text-align: center;
+  max-width: 600px;
+  padding: 2rem;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 1s ease-out 0.5s;
+}
+.carousel-slide .slide-content h3 {
+  text-shadow: 0 4px 10px #000;
+  margin-bottom: 1rem;
+}
+.carousel-slide .slide-content p {
+  text-shadow: 0 2px 5px #000;
+  font-weight: 500;
+}
+
+.slide-decoration {
+  margin: 1.5rem auto 0;
+  width: 60px;
+  height: 3px;
+  background-color: #b21c2a;
+  box-shadow: 0 0 10px #b21c2a;
+}
+
+.carousel-indicators-custom {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  display: flex;
+  gap: 10px;
+}
+.carousel-indicators-custom .indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(197, 157, 77, 0.3);
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 0;
+}
+.carousel-indicators-custom .indicator.active {
+  background: #c59d4d;
+  box-shadow: 0 0 10px #c59d4d;
+  transform: scale(1.2);
+}
+
 .join-form {
   background-color: #0f1218;
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -334,7 +484,6 @@ ul {
   border-color: #b21c2a;
 }
 
-/*SECCIONES ESPECÍFICAS: "EL PACTO"*/
 .quote-box {
   border-left: 3px solid #b21c2a;
   padding: 1rem 1.5rem;
@@ -395,65 +544,6 @@ ul {
   transform: translateY(-5px);
 }
 
-.comparison-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-@media (max-width: 768px) {
-  .comparison-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.comparison-col {
-  background: #0f1218;
-  padding: 2rem;
-  border-radius: 8px;
-  border-top: 4px solid transparent;
-}
-.comparison-col.positive {
-  border-top-color: #27ae60;
-}
-.comparison-col.negative {
-  border-top-color: #b21c2a;
-}
-
-.col-header {
-  font-family: "Cinzel", serif;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  font-size: 1.1rem;
-  text-align: center;
-}
-
-.check-list li, .cross-list li {
-  list-style: none;
-  position: relative;
-  padding-left: 2rem;
-  margin-bottom: 0.8rem;
-  color: rgb(214, 213, 213);
-  font-size: 0.95rem;
-}
-.check-list li::before, .cross-list li::before {
-  position: absolute;
-  left: 0;
-  font-weight: bold;
-}
-
-.check-list li::before {
-  content: "✓";
-  color: #27ae60;
-  font-size: 1.2rem;
-}
-
-.cross-list li::before {
-  content: "✕";
-  color: #b21c2a;
-  font-size: 1.1rem;
-}
-
-/* MERCADO NEGRO */
 .construction-hero {
   position: relative;
   height: 85vh;
@@ -513,6 +603,78 @@ ul {
   backdrop-filter: blur(2px);
 }
 
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 768px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.comparison-col {
+  background: #0f1218;
+  padding: 2rem;
+  border-radius: 8px;
+  border-top: 4px solid transparent;
+}
+.comparison-col.positive {
+  border-top-color: #27ae60;
+}
+.comparison-col.negative {
+  border-top-color: #b21c2a;
+}
+
+.col-header {
+  font-family: "Cinzel", serif;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.check-list li, .cross-list li {
+  list-style: none;
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.8rem;
+  color: rgb(214, 213, 213);
+  font-size: 0.95rem;
+}
+.check-list li::before, .cross-list li::before {
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.check-list li::before {
+  content: "✓";
+  color: #27ae60;
+  font-size: 1.2rem;
+}
+
+.cross-list li::before {
+  content: "✕";
+  color: #b21c2a;
+  font-size: 1.1rem;
+}
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
+.site-footer {
+  background-color: #000000;
+  border-top: 1px solid transparent;
+  padding: 3rem 0;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* =========================================
+   9. ANIMACIONES (Keyframes & Effects)
+   ========================================= */
 @keyframes pulse {
   0% {
     transform: translate(-50%, -50%) scale(1);
@@ -524,31 +686,6 @@ ul {
     transform: translate(-50%, -50%) scale(1);
   }
 }
-/* FOOTER & RESPONSIVE*/
-.site-footer {
-  background-color: #8a121e;
-  border-top: 1px solid #c59d4d;
-  padding: 3rem 0;
-  text-align: center;
-  margin-top: auto;
-}
-
-@media (max-width: 991px) {
-  .hero-flex-container {
-    flex-direction: column;
-    text-align: center;
-  }
-  .hero-main {
-    margin: 0 auto;
-  }
-  .video-hero {
-    height: 100vh;
-  }
-  .layout-flex {
-    gap: 4rem;
-  }
-}
-/* --- EFECTO DE APARICIÓN (HUMO/NIEBLA) --- */
 .smoke-reveal {
   opacity: 0;
   filter: blur(12px);
@@ -556,7 +693,6 @@ ul {
   transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: opacity, filter, transform;
 }
-
 .smoke-reveal.active {
   opacity: 1;
   filter: blur(0);
